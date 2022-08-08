@@ -1,0 +1,6 @@
+<ng-container *ngIf="dogs$ | async as dogs">
+  <app-find-a-dog-ui
+    [dogs]="dogs"
+    (createRent)="onCreateRent($event)"
+  ></app-find-a-dog-ui>
+</ng-container>

@@ -1,0 +1,17 @@
+.my-dogs__accordion {
+  margin-top: 1rem;
+}
+
+.new-dog-form {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  &__submit {
+    line-height: 3.2rem;
+  }
+}
+
+.expansion-header-title {
+  margin: 0;
+}

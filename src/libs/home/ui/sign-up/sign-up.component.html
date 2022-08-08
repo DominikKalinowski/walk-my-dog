@@ -1,0 +1,20 @@
+<form class="sign-up-form" [formGroup]="form" (ngSubmit)="signUp()">
+  <mat-form-field appearance="fill">
+    <mat-label>Your name</mat-label>
+    <input
+      formControlName="name"
+      placeholder="Your name"
+      matInput
+      type="text"
+    />
+  </mat-form-field>
+
+  <!--  @TODO: 13) Spraw aby przycisk Sign up był w stanie disabled po wysłaniu requestu aż do otrzymania odpowiedzi (skorzustaj z selectora `userQuery.isLoading`)-->
+  <button
+    color="primary"
+    mat-raised-button
+    [disabled]="form.status !== 'VALID' || (isLoading$ | async)"
+  >
+    Sign up
+  </button>
+</form>

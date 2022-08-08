@@ -1,0 +1,60 @@
+<app-page-card>
+  <mat-card-title> My Dogs 💛 </mat-card-title>
+  <mat-card-content class="my-dogs__accordion">
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h2 class="expansion-header-title">Add new dog</h2>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <form
+          class="new-dog-form"
+          [formGroup]="form"
+        >
+          <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input
+              formControlName="name"
+              placeholder="Name"
+              matInput
+              type="text"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>Breed</mat-label>
+            <input
+              formControlName="breed"
+              placeholder="Breed"
+              matInput
+              type="text"
+            />
+          </mat-form-field>
+          <div>
+            <!-- @TODO: 16) Zdispatchuj akcję DOG_ACTIONS.create po kliknięciu przycisku `Save dog`, nie providuj Store do UI komponentu!
+                      Przekaż event do feature (smart) komponentu poprzez @Output i zdispatchuj akcję tam.-->
+            <button
+              class="new-dog-form__submit"
+              color="primary"
+              mat-raised-button
+              [disabled]="form.status !== 'VALID'"
+            >
+              Save dog
+            </button>
+          </div>
+        </form>
+      </mat-expansion-panel>
+      <mat-expansion-panel *ngFor="let dog of dogs">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h1>{{ dog.name }}</h1>
+            <img src="favicon.ico" />
+          </mat-panel-title>
+          <mat-panel-description> Your best friend :) </mat-panel-description>
+        </mat-expansion-panel-header>
+        Here would be additional info
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+</app-page-card>

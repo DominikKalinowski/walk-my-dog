@@ -1,0 +1,5 @@
+<ng-container *ngIf="dogs$ | async as dogs">
+  <app-my-dogs-ui
+    [dogs]="dogs"
+  ></app-my-dogs-ui>
+</ng-container>

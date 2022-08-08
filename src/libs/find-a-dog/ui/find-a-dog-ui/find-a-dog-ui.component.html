@@ -1,0 +1,54 @@
+<app-page-card>
+  <mat-card-title> Find a Dog 👀 </mat-card-title>
+  <mat-card-content class="my-dogs__accordion">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let dog of dogs">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h2 class="expansion-header-title">
+              {{ dog.name }} {{ dog.breed }}
+            </h2>
+            <img src="favicon.ico" />
+          </mat-panel-title>
+          <mat-panel-description>Expand to rent</mat-panel-description>
+        </mat-expansion-panel-header>
+        <form
+          class="new-dog-form"
+          [formGroup]="form"
+          (ngSubmit)="emitCreateRent(dog.id)"
+        >
+          <mat-form-field appearance="fill">
+            <mat-label>From</mat-label>
+            <input
+              formControlName="from"
+              placeholder="From"
+              matInput
+              type="date"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field appearance="fill">
+            <mat-label>To</mat-label>
+            <input
+              formControlName="to"
+              placeholder="To"
+              matInput
+              required
+              type="date"
+            />
+          </mat-form-field>
+          <div>
+            <button
+              class="new-dog-form__submit"
+              color="primary"
+              mat-raised-button
+              [disabled]="form.status !== 'VALID'"
+            >
+              Save dog
+            </button>
+          </div>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+</app-page-card>

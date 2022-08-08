@@ -1,0 +1,12 @@
+<div>
+  <h1 class="welcome-in">Welcome in<br />Walk my dog! 🦮</h1>
+  <div class="sign-up">
+    <!--    @TODO: 9) Nałóż stworzoną dyrektywę na sign-up.component użyty w home.component tak aby element wyświetlał się tylko dla niezalogowanych użytkowników-->
+    <app-sign-up></app-sign-up>
+    <!--    @TODO: 14) Po pomyślnym zarejestrowaniu/zalogowaniu w miejscu formularza rejestracji powinien pojawić się nagłówek `How's your day, {{username}}`,
+                  gdzie w miejscu {{username}} powinien znajdować się imię użytkownika _po zalogowaniu backend zawsze zwraca `moje imię` jako imię_ -->
+    <h1 *ngIf="false" class="hows-your-day">
+      How's your day, $username?
+    </h1>
+  </div>
+</div>
