@@ -11,6 +11,7 @@
 
   <!--  @TODO: 13) Spraw aby przycisk Sign up był w stanie disabled po wysłaniu requestu aż do otrzymania odpowiedzi (skorzustaj z selectora `userQuery.isLoading`)-->
   <button
+    (click)="signUp()"
     color="primary"
     mat-raised-button
     [disabled]="form.status !== 'VALID' || (isLoading$ | async)"

@@ -17,7 +17,7 @@ export class HomeComponent {
   userName$ = this._store
     .select(userQuery.user)
     .pipe(map((user) => (user ? user.name : null)));
-
+  loggedIn = !!this.userName$;
   constructor(private readonly _store: Store) {}
 }
 

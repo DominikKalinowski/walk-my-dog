@@ -10,7 +10,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { Store } from '@ngrx/store';
 import { USER_ACTIONS } from '../../../data-access/user-state/+state/user.actions';
 import { CommonModule } from '@angular/common';
-import {userQuery} from "../../../data-access/user-state/+state/user.selectors";
+import { userQuery } from '../../../data-access/user-state/+state/user.selectors';
+import {
+  ShowForLoggedInDirective,
+  ShowForLoggedInDirectiveModule,
+} from '../../../shared/directives/show-for-logged-in/show-for-logged-in.directive';
 
 @Component({
   selector: 'app-sign-up',
@@ -44,5 +48,6 @@ export class SignUpComponent {
     MatButtonModule,
   ],
   exports: [SignUpComponent],
+  providers: [ShowForLoggedInDirective],
 })
 export class SignUpComponentModule {}
