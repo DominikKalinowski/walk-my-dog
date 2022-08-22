@@ -37,6 +37,7 @@
             <button
               class="new-dog-form__submit"
               color="primary"
+              (click)="saveDog()"
               mat-raised-button
               [disabled]="form.status !== 'VALID'"
             >

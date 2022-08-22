@@ -4,7 +4,6 @@ import {
   EventEmitter,
   Input,
   NgModule,
-  OnInit,
   Output,
 } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -18,10 +17,8 @@ import { MatInputModule } from '@angular/material/input';
 import {
   NonNullableFormBuilder,
   ReactiveFormsModule,
-  UntypedFormBuilder,
   Validators,
 } from '@angular/forms';
-import { CreateDogPayload } from '../../../data-access/dogs-state/payloads/create-dog.payload';
 
 @Component({
   selector: 'app-my-dogs-ui[dogs]',
@@ -29,8 +26,9 @@ import { CreateDogPayload } from '../../../data-access/dogs-state/payloads/creat
   styleUrls: ['./my-dogs-ui.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MyDogsUiComponent implements OnInit {
+export class MyDogsUiComponent {
   @Input() dogs!: Dog[];
+  @Output() dog: EventEmitter<Omit<Dog,'id'>> = new EventEmitter<Omit<Dog,'id'>>();
 
   form = this._fb.group({
     name: ['', [Validators.required]],
@@ -39,7 +37,10 @@ export class MyDogsUiComponent implements OnInit {
 
   constructor(private readonly _fb: NonNullableFormBuilder) {}
 
-  ngOnInit(): void {}
+  saveDog(): void {
+    const dog: Omit<Dog,'id'> = {breed: this.form.value.breed!, name: this.form.value.name!};
+    this.dog.emit(dog);
+  }
 }
 
 @NgModule({

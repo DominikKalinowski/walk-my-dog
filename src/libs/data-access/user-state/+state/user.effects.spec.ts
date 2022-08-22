@@ -9,7 +9,7 @@ import { UserEffects } from './user.effects';
 // nie musi być z wykorzystaniem TestBed'a ;)
 
 describe('UserEffects', () => {
-  let actions: Observable<any>;
+  let actions: Observable<ANY>;
   let effects: UserEffects;
 
   beforeEach(() => {

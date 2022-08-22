@@ -5,6 +5,8 @@
   <span class="toolbar__title">Walk my dog!</span>
   <span class="toolbar__spacer"></span>
   <!--  @TODO: 10) Nałóż tą samą dyrektywę na oba przyciski z navbara (`My dogs` i `Find a dog`) aby nie wyświetlały się dla niezalogowanych użytkowników -->
+  <ng-container 
+  *appShowForLoggedIn="(userName$ | async) === null ? false : true">
   <button
     routerLink="find-a-dog"
     class="toolbar__find-a-dog"
@@ -14,6 +16,8 @@
     <span>Find a dog</span>
     <mat-icon>search</mat-icon>
   </button>
+</ng-container>
+<ng-container *appShowForLoggedIn="(userName$ | async) === null ? false : true">
   <button
     routerLink="my-dogs"
     color="accent"
@@ -22,6 +26,8 @@
     <span>My dogs</span>
     <mat-icon>home</mat-icon>
   </button>
+</ng-container>
 </mat-toolbar>
 
 <!-- @TODO: 2) Użyj routera outletu do projekcji kontentu (<router-outlet>) -->
+<router-outlet></router-outlet>

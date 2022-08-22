@@ -38,7 +38,12 @@ Dodatkowo dla ścieżek niezgodnych z żadną z zadeklarowanych chcemy być prze
 8. @TODO: 8) Uzupełnij customową dyrektywę `ShowForLoggedInDirective` która bazując na wartości ze statu o tym czy użytkownik jest zalogowany,
    doda lub usunie element na który została nałożona
 9. @TODO: 9) Nałóż stworzoną dyrektywę na sign-up.component użyty w home.component tak aby element wyświetlał się tylko dla niezalogowanych użytkowników
+
+
+do zrobienia 10
 10. @TODO: 10) Nałóż tą samą dyrektywę na oba przyciski z navbara (`My dogs` i `Find a dog`) aby nie wyświetlały się dla niezalogowanych użytkowników
+
+
 11. @TODO: 11) Uzupełnij LoggedInGuard tak aby zwracał true tylko dla zalogowanych użytkowników
     (użyj selektora userQuery.user do stwierdzenia czy user jest zdefiniowany),
     w przeciwnym razie przekieruj na '' (home component)
