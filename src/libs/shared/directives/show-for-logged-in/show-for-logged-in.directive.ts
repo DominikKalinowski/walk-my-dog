@@ -1,30 +1,26 @@
-import {
-  Directive,
-  Input,
-  NgModule,
-  OnInit,
-  TemplateRef,
-  ViewContainerRef,
-} from '@angular/core';
-import { Store } from '@ngrx/store';
-import { userQuery } from '../../../data-access/user-state/+state/user.selectors';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { filter, withLatestFrom } from 'rxjs';
+import { Directive, EmbeddedViewRef, Input, NgModule, OnInit, TemplateRef, ViewContainerRef } from "@angular/core";
+import { Store } from "@ngrx/store";
+import { userQuery } from "../../../data-access/user-state/+state/user.selectors";
+import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
+import { filter, withLatestFrom } from "rxjs";
 
 @UntilDestroy()
 @Directive({
-  selector: '[appShowForLoggedIn]',
+  selector: "[appShowForLoggedIn]"
 })
 export class ShowForLoggedInDirective implements OnInit {
   // ten imput definiuje czy element ma byc widoczny dla użytkownika zalogowanego czy niezalogowanego
   @Input() appShowForLoggedIn = true;
   showed = false;
 
+  private embeddedViewRef: EmbeddedViewRef<any> | null = null;
+
   constructor(
     private readonly _store: Store,
     private templateRef: TemplateRef<any>,
     private viewContainer: ViewContainerRef
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.initObserveUserState();
@@ -44,12 +40,18 @@ export class ShowForLoggedInDirective implements OnInit {
   private changeVisibility(loggedIn: boolean): void {
     // @TODO: 8) Uzupełnij customową dyrektywę `ShowForLoggedInDirective` która bazując na wartości ze statu o tym
     //    czy użytkownik jest zalogowany, doda lub usunie element na który została nałożona
+    if (loggedIn) {
+      this.embeddedViewRef = this.viewContainer.createEmbeddedView(this.templateRef);
+    } else {
+      this.embeddedViewRef?.destroy();
+    }
   }
 }
 
 @NgModule({
   declarations: [ShowForLoggedInDirective],
   imports: [],
-  exports: [ShowForLoggedInDirective],
+  exports: [ShowForLoggedInDirective]
 })
-export class ShowForLoggedInDirectiveModule {}
+export class ShowForLoggedInDirectiveModule {
+}
