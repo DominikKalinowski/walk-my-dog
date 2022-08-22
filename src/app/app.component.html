@@ -6,6 +6,7 @@
   <span class="toolbar__spacer"></span>
   <!--  @TODO: 10) Nałóż tą samą dyrektywę na oba przyciski z navbara (`My dogs` i `Find a dog`) aby nie wyświetlały się dla niezalogowanych użytkowników -->
   <button
+  *appShowForLoggedIn="false"
     routerLink="find-a-dog"
     class="toolbar__find-a-dog"
     color="accent"
@@ -15,6 +16,7 @@
     <mat-icon>search</mat-icon>
   </button>
   <button
+  *appShowForLoggedIn="false"
     routerLink="my-dogs"
     color="accent"
     mat-raised-button
@@ -25,3 +27,4 @@
 </mat-toolbar>
 
 <!-- @TODO: 2) Użyj routera outletu do projekcji kontentu (<router-outlet>) -->
+<router-outlet></router-outlet>
