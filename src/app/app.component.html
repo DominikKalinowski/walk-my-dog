@@ -10,6 +10,7 @@
     class="toolbar__find-a-dog"
     color="accent"
     mat-raised-button
+    *appShowForLoggedIn="true"
   >
     <span>Find a dog</span>
     <mat-icon>search</mat-icon>
@@ -18,10 +19,11 @@
     routerLink="my-dogs"
     color="accent"
     mat-raised-button
+    *appShowForLoggedIn="true"
   >
     <span>My dogs</span>
     <mat-icon>home</mat-icon>
   </button>
 </mat-toolbar>
-
+<router-outlet></router-outlet>
 <!-- @TODO: 2) Użyj routera outletu do projekcji kontentu (<router-outlet>) -->

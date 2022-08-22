@@ -44,6 +44,23 @@ export class ShowForLoggedInDirective implements OnInit {
   private changeVisibility(loggedIn: boolean): void {
     // @TODO: 8) Uzupełnij customową dyrektywę `ShowForLoggedInDirective` która bazując na wartości ze statu o tym
     //    czy użytkownik jest zalogowany, doda lub usunie element na który została nałożona
+    if (this.appShowForLoggedIn) {
+      if (loggedIn) {
+        this.showed = true;
+        this.viewContainer.createEmbeddedView(this.templateRef);
+      } else {
+        this.showed = false;
+        this.viewContainer.clear();
+      }
+    } else {
+      if (loggedIn) {
+        this.showed = false;
+        this.viewContainer.clear();
+      } else {
+        this.showed = true;
+        this.viewContainer.createEmbeddedView(this.templateRef);
+      }
+    }
   }
 }
 
