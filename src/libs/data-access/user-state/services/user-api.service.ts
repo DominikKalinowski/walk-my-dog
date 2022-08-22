@@ -14,7 +14,6 @@ export class UserApiService {
   }
 
   signUp(name: string): Observable<User> {
-    // delay for observing disabled state of sign up button
     return this._http.post<User>('/user', { name }).pipe(delay(1000));
   }
 }

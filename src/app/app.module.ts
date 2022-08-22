@@ -47,7 +47,11 @@ import { ShowForLoggedInDirectiveModule } from '../libs/shared/directives/show-f
     ShowForLoggedInDirectiveModule,
   ],
   providers: [
-    // @TODO: 1) zaprovide'uj RestApiInterceptor
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RestApiInterceptor,
+      multi: true,
+    },
   ],
   bootstrap: [AppComponent],
 })
