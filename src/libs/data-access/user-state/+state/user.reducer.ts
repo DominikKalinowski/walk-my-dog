@@ -27,5 +27,10 @@ export const userReducer = createReducer(
   on(USER_ACTIONS.signUpFail, USER_ACTIONS.logInFail, (state, payload) => ({
     ...state,
     isLoading: false,
+  })),
+  on(USER_ACTIONS.logInSuccess,USER_ACTIONS.signUpSuccess,(state,payload)=>({
+    ...state,
+    isLoading:false,
+    user:payload
   }))
 );

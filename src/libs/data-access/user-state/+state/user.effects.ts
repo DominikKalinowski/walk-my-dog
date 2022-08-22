@@ -50,7 +50,39 @@ export class UserEffects implements OnInitEffects {
   );
 
   // @TODO: 4) Napisz effecty w user store dla akcji Sign Up,
+  signIn$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(USER_ACTIONS.signUp),
+      switchMap((action) =>
+        this.apiService.signUp(action.name).pipe(
+          map((user) => USER_ACTIONS.signUpSuccess(user)),
+          catchError((error) => of(USER_ACTIONS.signUpFail(error)))
+        )
+      )
+    )
+  );
 
+  signInSuccess$ = createEffect(
+    ()=>
+    this.actions$.pipe(
+      ofType(USER_ACTIONS.signUpSuccess),
+      map((user)=>this.storageService.setUserId(user.id)),
+      tap(() => this.toast.success('Successfully signed up!'))
+
+    ),
+    { dispatch: false }
+
+  )
+
+  signInFail$ = createEffect(
+    ()=>
+    this.actions$.pipe(
+      ofType(USER_ACTIONS.signUpFail),
+      tap(() => this.toast.success('Sign up failed!'))
+    ),
+    { dispatch: false }
+
+  )
   constructor(
     private actions$: Actions,
     private apiService: UserApiService,

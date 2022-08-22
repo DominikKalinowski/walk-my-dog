@@ -20,12 +20,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { ShowForLoggedInDirectiveModule } from '../libs/shared/directives/show-for-logged-in/show-for-logged-in.directive';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent,],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+
     EffectsModule.forRoot([]),
     StoreModule.forRoot(
       {},
@@ -46,7 +47,10 @@ import { ShowForLoggedInDirectiveModule } from '../libs/shared/directives/show-f
     DogsRentStateModule,
     ShowForLoggedInDirectiveModule,
   ],
+  exports:[ShowForLoggedInDirectiveModule],
   providers: [
+    {provide:HTTP_INTERCEPTORS,useClass:RestApiInterceptor,multi:true}
+
     // @TODO: 1) zaprovide'uj RestApiInterceptor
   ],
   bootstrap: [AppComponent],
