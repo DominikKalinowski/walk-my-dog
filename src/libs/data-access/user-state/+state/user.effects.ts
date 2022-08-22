@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType, OnInitEffects } from '@ngrx/effects';
+import {Actions, createEffect, Effect, ofType, OnInitEffects} from '@ngrx/effects';
 import { catchError, map, of, repeat, switchMap, tap } from 'rxjs';
 import { HotToastService } from '@ngneat/hot-toast';
 import { UserApiService } from '../services/user-api.service';
@@ -50,6 +50,7 @@ export class UserEffects implements OnInitEffects {
   );
 
   // @TODO: 4) Napisz effecty w user store dla akcji Sign Up,
+
 
   constructor(
     private actions$: Actions,
