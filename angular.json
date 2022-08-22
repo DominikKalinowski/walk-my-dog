@@ -3,7 +3,8 @@
   "cli": {
     "schematicCollections": [
       "@angular-eslint/schematics"
-    ]
+    ],
+    "analytics": "fece1145-b083-4d08-b6d0-376dae9fae6e"
   },
   "version": 1,
   "newProjectRoot": "projects",
