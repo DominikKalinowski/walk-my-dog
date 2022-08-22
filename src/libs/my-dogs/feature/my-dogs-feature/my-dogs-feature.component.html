@@ -1,5 +1,6 @@
 <ng-container *ngIf="dogs$ | async as dogs">
   <app-my-dogs-ui
     [dogs]="dogs"
+    (dog)="handleOnSave($event)"
   ></app-my-dogs-ui>
 </ng-container>

@@ -19,6 +19,11 @@ export const initialState: UserState = {
 
 export const userReducer = createReducer(
   initialState,
+  on(USER_ACTIONS.logInSuccess, USER_ACTIONS.signUpSuccess, (state, payload) => ({
+    ...state,
+    user: payload,
+    isLoading: false
+  })),
   //@TODO: 6) reducer na akcje `Sign Up Success` oraz `Log In Success` ustawi otrzymane dane użytkownika i propsa isLoading na false w state'cie
   on(USER_ACTIONS.signUp, USER_ACTIONS.logIn, (state, payload) => ({
     ...state,

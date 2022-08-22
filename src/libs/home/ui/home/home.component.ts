@@ -3,9 +3,8 @@ import { SignUpComponentModule } from '../sign-up/sign-up.component';
 import { ShowForLoggedInDirectiveModule } from '../../../shared/directives/show-for-logged-in/show-for-logged-in.directive';
 import { Store } from '@ngrx/store';
 import { userQuery } from '../../../data-access/user-state/+state/user.selectors';
-import { map, tap } from 'rxjs';
+import { map } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { User } from '../../../shared/domain/user.type';
 
 @Component({
   selector: 'app-home',

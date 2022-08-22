@@ -17,8 +17,12 @@ import { filter, withLatestFrom } from 'rxjs';
 })
 export class ShowForLoggedInDirective implements OnInit {
   // ten imput definiuje czy element ma byc widoczny dla użytkownika zalogowanego czy niezalogowanego
-  @Input() appShowForLoggedIn = true;
-  showed = false;
+  @Input() set appShowForLoggedIn(show: boolean) {
+    this.showed = show;
+    this.changeVisibility();
+  }
+
+  private showed = false;
 
   constructor(
     private readonly _store: Store,
@@ -27,23 +31,15 @@ export class ShowForLoggedInDirective implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.initObserveUserState();
+    this.changeVisibility();
   }
 
-  private initObserveUserState(): void {
-    this._store
-      .select(userQuery.isLoading)
-      .pipe(
-        filter((isLoading) => !isLoading),
-        withLatestFrom(this._store.select(userQuery.user)),
-        untilDestroyed(this)
-      )
-      .subscribe(([_, user]) => this.changeVisibility(!!user));
-  }
-
-  private changeVisibility(loggedIn: boolean): void {
+  private changeVisibility(): void {
     // @TODO: 8) Uzupełnij customową dyrektywę `ShowForLoggedInDirective` która bazując na wartości ze statu o tym
     //    czy użytkownik jest zalogowany, doda lub usunie element na który została nałożona
+    this.viewContainer.clear();
+    if (this.showed)
+      this.viewContainer.createEmbeddedView(this.templateRef);
   }
 }
 
